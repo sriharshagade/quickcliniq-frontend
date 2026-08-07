@@ -542,6 +542,9 @@ function CTA() {
 }
 
 function Footer() {
+  const resumeUrl = "https://docs.google.com/document/d/1URW0U3VKQrB1ei65MZ4aqq-fwfPQ6m-v/edit?usp=sharing&ouid=101993679392346912388&rtpof=true&sd=true";
+  const resumeDownloadUrl = "https://docs.google.com/document/d/1URW0U3VKQrB1ei65MZ4aqq-fwfPQ6m-v/export?format=pdf";
+
   return (
     <footer
       className="border-t py-8 px-6"
@@ -550,7 +553,7 @@ function Footer() {
         backgroundColor: colors.surface,
       }}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <div className="font-bold text-lg mb-2" style={{ color: colors.primary }}>
             Quick Cliniq
@@ -558,6 +561,25 @@ function Footer() {
           <div className="text-xs" style={{ color: colors.onSurfaceVariant }}>
             @2026 a tynzo product
           </div>
+        </div>
+        <div className="flex flex-col gap-3 text-xs">
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:opacity-70"
+            style={{ color: colors.primary, fontWeight: "600" }}
+          >
+            📄 View Resume
+          </a>
+          <a
+            href={resumeDownloadUrl}
+            download="resume.pdf"
+            className="transition hover:opacity-70"
+            style={{ color: colors.primary, fontWeight: "600" }}
+          >
+            ⬇️ Download Resume
+          </a>
         </div>
         <div className="flex flex-col md:flex-row md:justify-end gap-4 text-xs">
           <a
