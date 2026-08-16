@@ -3,14 +3,14 @@
 
 :root {
   color-scheme: light;
-  --qc-card-bg: rgba(255, 255, 255, 0.94);
-  --qc-card-border: rgba(203, 213, 225, 0.72);
-  --qc-card-shadow: 0 10px 28px rgba(15, 23, 42, 0.055);
-  --qc-card-shadow-hover: 0 14px 34px rgba(15, 23, 42, 0.075);
+  --qc-card-bg: #ffffff;
+  --qc-card-border: #e8eae8;
+  --qc-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0, 0, 0, 0.04);
+  --qc-card-shadow-hover: 0 2px 5px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.06);
   font-family:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
     sans-serif;
-  background: #f8fafc;
+  background: #fbfcfd;
 }
 
 * {
@@ -29,15 +29,12 @@ html {
 body {
   min-height: 100%;
   margin: 0;
-  background:
-    linear-gradient(135deg, rgba(20, 184, 166, 0.08), transparent 24rem),
-    linear-gradient(315deg, rgba(14, 165, 233, 0.06), transparent 26rem),
-    #f8fafc;
-  color: #0f172a;
+  background: #fbfcfd;
+  color: #0f1419;
   font-feature-settings: "kern" 1;
   font-size: 0.9375rem;
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   line-height: 1.6;
 }
 
@@ -57,7 +54,7 @@ textarea,
 th,
 td,
 .tracking-tight {
-  letter-spacing: -0.01em !important;
+  letter-spacing: -0.005em;
 }
 
 h1,
@@ -66,24 +63,28 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: #0f1419;
 }
 
 h1 {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: clamp(1.75rem, 6vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 700;
+  line-height: 1.2;
 }
 
 h3 {
   font-size: 1.25rem;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 h4 {
@@ -166,10 +167,7 @@ textarea {
 }
 
 .theme-light {
-  background:
-    linear-gradient(135deg, rgba(20, 184, 166, 0.08), transparent 24rem),
-    linear-gradient(315deg, rgba(14, 165, 233, 0.06), transparent 28rem),
-    #f8fafc;
+  background: #fbfcfd;
 }
 
 .theme-light :where(section, article, div)[class*="rounded-lg"][class*="border"][class*="bg-white"][class*="shadow"],
@@ -225,14 +223,11 @@ textarea {
 
 .theme-dark {
   color-scheme: dark;
-  --qc-card-bg: rgba(15, 23, 42, 0.92);
-  --qc-card-border: rgba(51, 65, 85, 0.86);
-  --qc-card-shadow: 0 10px 28px rgba(2, 6, 23, 0.24);
-  --qc-card-shadow-hover: 0 14px 34px rgba(2, 6, 23, 0.32);
-  background:
-    linear-gradient(135deg, rgba(20, 184, 166, 0.10), transparent 26rem),
-    linear-gradient(315deg, rgba(14, 165, 233, 0.08), transparent 30rem),
-    #0f172a;
+  --qc-card-bg: #1a1f2e;
+  --qc-card-border: #2d3748;
+  --qc-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --qc-card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.35);
+  background: #0f1419;
   color: #e5e7eb;
 }
 
@@ -241,13 +236,11 @@ textarea {
 .theme-dark .bg-white\/85,
 .theme-dark .bg-white\/90,
 .theme-dark .bg-white\/95 {
-  background-color: rgba(15, 23, 42, 0.96) !important;
+  background-color: #1a1f2e !important;
 }
 
 .theme-dark main {
-  background:
-    linear-gradient(135deg, rgba(20, 184, 166, 0.08), transparent 24rem),
-    #0f172a;
+  background: #0f1419;
 }
 
 .theme-dark aside,

@@ -1,12 +1,21 @@
-.quickcliniq-home {
-  background:
-    radial-gradient(circle at 12% 6%, rgba(20, 184, 166, 0.12), transparent 30rem),
-    radial-gradient(circle at 88% 18%, rgba(8, 145, 178, 0.10), transparent 28rem),
-    linear-gradient(180deg, #f8fafc 0%, #ffffff 46%, #f8fafc 100%);
+/* Typography & Spacing System */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Refined heading hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-kerning: auto;
+  text-rendering: optimizeLegibility;
+}
+
+/* Remove excessive decorative gradients */
 .quickcliniq-float {
-  animation: quickcliniq-float 7s ease-in-out infinite;
+  animation: none;
 }
 
 .quickcliniq-logo-lockup {
@@ -24,19 +33,16 @@
   }
 }
 
-@keyframes quickcliniq-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
+/* Smooth transitions for interactive elements */
+button, a {
+  transition: opacity 200ms ease, transform 200ms ease, background-color 150ms ease;
 }
 
+/* Support reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .quickcliniq-float {
-    animation: none;
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

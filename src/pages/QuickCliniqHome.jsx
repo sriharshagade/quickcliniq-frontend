@@ -6,43 +6,40 @@ const colors = {
   primary: "#00342b",
   onPrimary: "#ffffff",
   primaryContainer: "#004d40",
-  onPrimaryContainer: "#7ebdac",
+  onPrimaryContainer: "#ffffff",
   secondary: "#006d2f",
   onSecondary: "#ffffff",
-  surface: "#f7f9fb",
+  surface: "#fbfcfd",
   surfaceContainer: "#ffffff",
-  onSurface: "#191c1e",
-  onSurfaceVariant: "#3f4945",
+  onSurface: "#0f1419",
+  onSurfaceVariant: "#525f57",
   outline: "#707975",
-  outlineVariant: "#bfc9c4",
-  error: "#ba1a1a",
+  outlineVariant: "#e0e5e1",
+  error: "#b3261e",
   errorContainer: "#ffdad6",
+  divider: "#e8eae8",
 };
 
 const features = [
   {
-    icon: "💬",
-    title: "WhatsApp booking flow",
+    title: "WhatsApp Booking Flow",
     description:
-      "Patients can book, reschedule, or cancel appointments from WhatsApp with short replies like 1, book, modify, or cancel.",
+      "Patients book directly from WhatsApp using natural language or menu options. No app installation, no complex forms—just replies like 'book', '1', or 'tomorrow morning'.",
   },
   {
-    icon: "🤖",
-    title: "Conversational intake",
+    title: "Intelligent Patient Intake",
     description:
-      "Collect patient name, age, gender, symptoms, doctor, date, and time with guided prompts that understand natural text.",
+      "Automatically collect patient name, age, gender, symptoms, doctor preference, date, and time. Handles natural text and understands context without rigid forms.",
   },
   {
-    icon: "✏️",
-    title: "Modify without restarting",
+    title: "Flexible Modification",
     description:
-      "Patients can correct details such as name, age, symptoms, gender, date, doctor, or slot before confirmation.",
+      "Patients review and correct appointment details before final confirmation. Change any detail (doctor, time, date, symptoms) without restarting the entire process.",
   },
   {
-    icon: "📊",
-    title: "Clinic control pane",
+    title: "Clinic Dashboard",
     description:
-      "Doctors, schedules, unavailable blocks, patient records, and appointment activity stay organized for staff.",
+      "Real-time view of all appointments, patient records, doctor schedules, no-shows, and unavailable time blocks. One place for complete clinic operations.",
   },
 ];
 
@@ -54,14 +51,14 @@ const workflow = [
 ];
 
 const capabilities = [
-  "Book, reschedule, and cancel on WhatsApp",
-  "Natural date and time understanding",
-  "Multi-doctor routing",
-  "Doctor schedule and slot management",
-  "Unavailable time blocking",
-  "Dashboard appointment records",
-  "Patient profile continuity",
-  "Theme and clinic preferences",
+  "Appointment booking, rescheduling, cancellation via WhatsApp",
+  "Natural language understanding (dates, times, doctor names)",
+  "Multi-doctor clinic routing and scheduling",
+  "Doctor availability and slot management",
+  "Unavailable time blocking (lunch, breaks, off-days)",
+  "Patient profile continuity across visits",
+  "Multi-language support (English, Hindi, Telugu, Tamil, Kannada, Malayalam)",
+  "Clinic-specific settings and preferences",
 ];
 
 function Navbar() {
@@ -69,59 +66,64 @@ function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 border-b"
+      className="sticky top-0 z-50"
       style={{
-        borderColor: colors.outlineVariant,
         backgroundColor: colors.surfaceContainer,
+        borderBottom: `1px solid ${colors.divider}`,
       }}
     >
-      <div className="flex justify-between items-center h-16 px-6 max-w-7xl mx-auto">
+      <div className="flex justify-between items-center px-4 sm:px-6 h-14 sm:h-16 max-w-7xl mx-auto">
         <button
           onClick={() => navigate("/")}
-          className="text-xl font-bold transition hover:opacity-80"
-          style={{ color: colors.primary }}
+          className="transition hover:opacity-70 active:opacity-50"
           aria-label="Quick Cliniq"
+          style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}
         >
-          Quick Cliniq
+          <img
+            src="/src/images/logo_nobg.png"
+            alt="Quick Cliniq"
+            className="h-28 sm:h-32"
+            style={{ maxHeight: "128px", objectFit: "contain" }}
+          />
         </button>
-        <div className="hidden md:flex items-center gap-8 text-sm">
+        <div className="hidden md:flex items-center gap-10 text-sm tracking-tight">
           <a
             href="#features"
-            className="transition hover:opacity-70"
+            className="transition hover:opacity-60 active:opacity-40"
             style={{ color: colors.onSurfaceVariant }}
           >
             Features
           </a>
           <a
             href="#workflow"
-            className="transition hover:opacity-70"
+            className="transition hover:opacity-60 active:opacity-40"
             style={{ color: colors.onSurfaceVariant }}
           >
             Workflow
           </a>
           <a
             href="#operations"
-            className="transition hover:opacity-70"
+            className="transition hover:opacity-60 active:opacity-40"
             style={{ color: colors.onSurfaceVariant }}
           >
             Operations
           </a>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={() => navigate("/login")}
-            className="hidden md:block px-4 py-2 font-semibold text-sm transition hover:opacity-80"
+            className="hidden sm:block px-4 py-2 text-sm font-medium transition hover:opacity-60 active:opacity-40"
             style={{ color: colors.onSurfaceVariant }}
           >
-            Login
+            Sign in
           </button>
           <button
             onClick={() => navigate("/login")}
-            className="px-6 py-2 font-semibold text-sm transition hover:opacity-90"
+            className="px-5 sm:px-6 py-2 font-medium text-sm transition hover:opacity-90 active:scale-95"
             style={{
-              backgroundColor: colors.primaryContainer,
-              color: colors.onPrimaryContainer,
-              borderRadius: "4px",
+              backgroundColor: colors.primary,
+              color: colors.onPrimary,
+              borderRadius: "6px",
             }}
           >
             Get Started
@@ -137,228 +139,114 @@ function Hero() {
 
   return (
     <section style={{ backgroundColor: colors.surface }}>
-      <div className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
-        <div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col">
           <h1
-            className="text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-6 sm:mb-8 leading-tight tracking-tight"
             style={{ color: colors.primary }}
           >
-            Why waste half a day when the consultation is just 15 minutes?
+            Why waste half a day for a 15-minute consultation?
           </h1>
           <p
-            className="text-lg mb-8 leading-relaxed"
+            className="text-base sm:text-lg mb-8 sm:mb-10 leading-relaxed"
             style={{ color: colors.onSurfaceVariant }}
           >
-            Stop the manual chase. Quick Cliniq's WhatsApp automation eliminates
-            waiting times for clinics like Dr. Smith Hospital by connecting
-            patients to their 15-minute slots instantly, streamlining flow
-            without the back-and-forth.
+            Stop manual scheduling. Quick Cliniq's WhatsApp automation connects patients to their slots instantly, eliminating waiting times and back-and-forth coordination.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-12">
             <button
               onClick={() => navigate("/login")}
-              className="px-8 py-3 font-semibold transition hover:opacity-90 flex items-center justify-center gap-2"
+              className="px-6 sm:px-8 py-3 font-medium transition hover:opacity-90 active:scale-95 flex items-center justify-center gap-2 order-first sm:order-none"
               style={{
-                backgroundColor: colors.primaryContainer,
-                color: colors.onPrimaryContainer,
-                borderRadius: "4px",
+                backgroundColor: colors.primary,
+                color: colors.onPrimary,
+                borderRadius: "8px",
               }}
             >
-              Open clinic dashboard
-              <ArrowRight size={18} />
+              Open dashboard
+              <ArrowRight size={16} />
             </button>
             <button
-              className="px-8 py-3 font-semibold transition hover:opacity-90"
+              className="px-6 sm:px-8 py-3 font-medium transition hover:opacity-80 active:opacity-70"
               style={{
                 backgroundColor: colors.surfaceContainer,
                 color: colors.primary,
-                border: `1px solid ${colors.outlineVariant}`,
-                borderRadius: "4px",
+                border: `1px solid ${colors.divider}`,
+                borderRadius: "8px",
               }}
             >
-              View product
+              Learn more
             </button>
           </div>
-          <div className="mt-12 flex items-center gap-4 text-sm">
-            <div className="flex -space-x-2">
-              {["C1", "C2", "C3"].map((c) => (
-                <div
-                  key={c}
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2"
-                  style={{
-                    backgroundColor: colors.surface,
-                    borderColor: colors.surfaceContainer,
-                    color: colors.primary,
-                  }}
-                >
-                  {c}
-                </div>
-              ))}
-            </div>
+          <div className="flex items-center gap-3 text-sm">
             <p style={{ color: colors.onSurfaceVariant }}>
-              Trusted by 500+ modern clinics.
+              Demo • Customizable for your clinic
             </p>
           </div>
         </div>
 
-        {/* Split Screen Mockup */}
+        {/* Hero Visual */}
         <div
-          className="rounded-lg border overflow-hidden flex flex-col md:flex-row h-[550px]"
+          className="rounded-2xl overflow-hidden p-8 sm:p-12 lg:p-16 flex flex-col items-center justify-center text-center relative"
           style={{
-            borderColor: colors.outlineVariant,
-            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
+            background: `linear-gradient(135deg, ${colors.primary} 0%, #006d5c 100%)`,
+            minHeight: "380px",
+            boxShadow: "0 20px 60px rgba(0, 52, 43, 0.2)",
           }}
         >
-          {/* WhatsApp Side */}
-          <div className="w-full md:w-1/2 bg-[#efeae2] border-r flex flex-col">
-            <div className="bg-[#075e54] text-white p-4 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#075e54] font-bold text-sm">
-                QC
-              </div>
-              <div>
-                <div className="font-bold text-sm">Dr. Smith Hospital</div>
-                <div className="text-xs opacity-80">online</div>
-              </div>
-            </div>
-            <div className="p-4 flex-1 overflow-y-auto space-y-4">
+          {/* Hero Content */}
+          <div className="max-w-2xl z-10">
+            <h2
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-snug"
+              style={{ color: colors.onPrimary }}
+            >
+              Appointment Management Through WhatsApp
+            </h2>
+            <p
+              className="text-base sm:text-lg mb-8"
+              style={{ color: colors.onPrimary, opacity: 0.95 }}
+            >
+              No apps. No forms. Just simple conversations. Patients book, reschedule, and manage appointments directly on WhatsApp.
+            </p>
+
+            {/* Feature Pills */}
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
               {[
-                {
-                  sender: "end",
-                  text: "Hi, I need to book an appointment with Dr. Smith tomorrow morning.",
-                },
-                {
-                  sender: "start",
-                  text: "Hello! Dr. Smith has availability at 09:00 AM and 10:30 AM tomorrow. Which would you prefer?",
-                },
-                { sender: "end", text: "9:00 AM works." },
-              ].map((msg, i) => (
+                "WhatsApp Native",
+                "Natural Language",
+                "Real-time Updates",
+                "Multi-language",
+              ].map((feature) => (
                 <div
-                  key={i}
-                  className={`flex ${msg.sender === "end" ? "justify-end" : "justify-start"}`}
+                  key={feature}
+                  className="px-4 py-2 rounded-full text-xs sm:text-sm font-medium"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.2)",
+                    color: colors.onPrimary,
+                    border: `1px solid rgba(255, 255, 255, 0.3)`,
+                  }}
                 >
-                  <div
-                    className="p-3 rounded-lg max-w-[85%] shadow-sm text-sm"
-                    style={{
-                      backgroundColor:
-                        msg.sender === "end" ? "#dcf8c6" : "#ffffff",
-                      color: "#191c1e",
-                      borderRadius:
-                        msg.sender === "end"
-                          ? "8px 0px 8px 8px"
-                          : "0px 8px 8px 8px",
-                    }}
-                  >
-                    {msg.text}
-                  </div>
+                  {feature}
                 </div>
               ))}
-            </div>
-            <div
-              className="p-3 flex items-center gap-2 border-t"
-              style={{ borderColor: colors.outlineVariant }}
-            >
-              <span style={{ color: colors.outlineVariant }}>+</span>
-              <input
-                type="text"
-                placeholder="Type a message..."
-                className="flex-1 px-4 py-2 text-sm outline-none"
-                style={{
-                  backgroundColor: colors.surfaceContainer,
-                  border: `1px solid ${colors.outlineVariant}`,
-                  borderRadius: "20px",
-                  color: colors.onSurface,
-                }}
-              />
-              <span style={{ color: colors.primary }}>✓</span>
             </div>
           </div>
 
-          {/* Dashboard Side */}
+          {/* Decorative Elements */}
           <div
-            className="w-full md:w-1/2 flex flex-col p-6"
-            style={{ backgroundColor: colors.surface }}
-          >
-            <div
-              className="flex justify-between items-center mb-6 pb-4 border-b"
-              style={{ borderColor: colors.outlineVariant }}
-            >
-              <div className="font-bold" style={{ color: colors.primary }}>
-                Live Clinic Flow
-              </div>
-              <div
-                className="flex items-center gap-2 text-xs font-semibold px-2 py-1 rounded"
-                style={{
-                  backgroundColor: "#f0fdf4",
-                  color: colors.secondary,
-                }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: colors.secondary }}
-                ></span>
-                Active
-              </div>
-            </div>
-            <div className="space-y-4">
-              {[
-                {
-                  doctor: "Dr. Smith - Consult",
-                  time: "09:00 AM",
-                  status: "Confirmed via WhatsApp",
-                },
-                {
-                  doctor: "Dr. Jones - Follow up",
-                  time: "10:00 AM",
-                  status: "Pending confirmation",
-                },
-              ].map((apt, i) => (
-                <div
-                  key={i}
-                  className={`p-4 rounded-lg border relative overflow-hidden ${
-                    i === 1 ? "opacity-70" : ""
-                  }`}
-                  style={{
-                    backgroundColor: colors.surfaceContainer,
-                    borderColor: colors.outlineVariant,
-                    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
-                  }}
-                >
-                  <div
-                    className="absolute top-0 left-0 w-1 h-full"
-                    style={{
-                      backgroundColor:
-                        i === 0 ? colors.secondary : colors.outlineVariant,
-                    }}
-                  ></div>
-                  <div className="flex justify-between items-start mb-2">
-                    <div
-                      className="font-bold text-sm"
-                      style={{
-                        color: i === 0 ? colors.primary : colors.onSurfaceVariant,
-                      }}
-                    >
-                      {apt.doctor}
-                    </div>
-                    <span
-                      className="text-xs"
-                      style={{ color: colors.outline }}
-                    >
-                      {apt.time}
-                    </span>
-                  </div>
-                  <div
-                    className="text-sm flex items-center gap-2"
-                    style={{
-                      color: i === 0 ? colors.onSurfaceVariant : colors.outline,
-                    }}
-                  >
-                    <span>{i === 0 ? "✓" : "📅"}</span>
-                    {apt.status}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+            className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-10"
+            style={{
+              backgroundColor: colors.onPrimary,
+              transform: "translate(50%, -50%)",
+            }}
+          />
+          <div
+            className="absolute bottom-0 left-0 w-40 h-40 rounded-full opacity-10"
+            style={{
+              backgroundColor: colors.onPrimary,
+              transform: "translate(-50%, 50%)",
+            }}
+          />
         </div>
       </div>
     </section>
@@ -367,22 +255,21 @@ function Hero() {
 
 function Features() {
   return (
-    <section style={{ backgroundColor: colors.surfaceContainer }}>
-      <div className="max-w-7xl mx-auto px-6 py-24">
-        <div className="grid md:grid-cols-2 gap-8">
+    <section style={{ backgroundColor: colors.surfaceContainer }} id="features">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
           {features.map((f) => (
             <div
               key={f.title}
-              className="p-8 rounded-lg border transition hover:shadow-md"
+              className="p-6 sm:p-8 rounded-xl border transition hover:shadow-sm"
               style={{
                 backgroundColor: colors.surfaceContainer,
-                borderColor: colors.outlineVariant,
-                boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
+                borderColor: colors.divider,
+                borderWidth: "1px",
               }}
             >
-              <div className="text-3xl mb-6">{f.icon}</div>
               <h3
-                className="font-bold text-lg mb-3"
+                className="font-semibold text-lg sm:text-base mb-3 leading-snug"
                 style={{ color: colors.primary }}
               >
                 {f.title}
@@ -403,40 +290,38 @@ function Features() {
 
 function Workflow() {
   return (
-    <section style={{ backgroundColor: colors.surface }}>
-      <div className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+    <section style={{ backgroundColor: colors.surface }} id="workflow">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
           <h2
-            className="text-4xl font-bold mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6 leading-snug"
             style={{ color: colors.primary }}
           >
-            From WhatsApp message to confirmed visit, without the manual chase.
+            From message to confirmed appointment, without the back-and-forth.
           </h2>
           <p
-            className="text-lg"
+            className="text-base sm:text-lg"
             style={{ color: colors.onSurfaceVariant }}
           >
-            Patients can use natural messages or simple menu numbers. Staff
-            still keep final visibility through the clinic dashboard.
+            Patients use natural language or simple numbers. Staff maintain full visibility through the clinic dashboard.
           </p>
         </div>
-        <div className="grid md:grid-cols-4 gap-8 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 relative">
           <div
-            className="hidden md:block absolute top-1/2 left-0 w-full h-px -z-10 -translate-y-1/2"
-            style={{ backgroundColor: colors.outlineVariant }}
-          ></div>
+            className="hidden lg:block absolute top-1/2 left-0 w-full h-px -z-10 -translate-y-1/2"
+            style={{ backgroundColor: colors.divider }}
+          />
           {workflow.map((step, i) => (
             <div
               key={step}
-              className="p-6 rounded-lg border text-center"
+              className="p-6 sm:p-8 rounded-xl border text-center bg-white relative"
               style={{
-                backgroundColor: colors.surfaceContainer,
-                borderColor: colors.outlineVariant,
-                boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
+                borderColor: colors.divider,
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
               }}
             >
               <div
-                className="w-10 h-10 flex items-center justify-center font-bold text-lg mx-auto mb-4 rounded-full"
+                className="w-10 h-10 flex items-center justify-center font-semibold text-base mx-auto mb-4 rounded-full flex-shrink-0"
                 style={{
                   backgroundColor: colors.primary,
                   color: colors.onPrimary,
@@ -445,7 +330,7 @@ function Workflow() {
                 {i + 1}
               </div>
               <p
-                className="text-sm"
+                className="text-sm leading-relaxed"
                 style={{ color: colors.onSurfaceVariant }}
               >
                 {step}
@@ -460,42 +345,119 @@ function Workflow() {
 
 function Operations() {
   return (
-    <section style={{ backgroundColor: colors.surface }}>
-      <div className="max-w-7xl mx-auto px-6 py-24">
-        <div className="max-w-3xl mb-16">
+    <section style={{ backgroundColor: colors.surface }} id="operations">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28">
+        <div className="max-w-3xl mb-12 sm:mb-16 lg:mb-20">
           <h2
-            className="text-4xl font-bold mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6 leading-snug"
             style={{ color: colors.primary }}
           >
-            Built around real clinic operations.
+            Built for real clinic operations.
           </h2>
-          <p className="text-lg" style={{ color: colors.onSurfaceVariant }}>
-            The goal is not to add another noisy tool. It is to reduce
-            repetitive coordination while keeping appointment control clear.
+          <p className="text-base sm:text-lg" style={{ color: colors.onSurfaceVariant }}>
+            Reduce repetitive coordination while maintaining clear appointment control. Not another noisy tool—designed to simplify how clinics work.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {capabilities.map((cap) => (
             <div
               key={cap}
-              className="flex items-start gap-3 p-5 rounded-lg border"
+              className="flex items-start gap-3 p-5 rounded-lg border bg-white"
               style={{
-                backgroundColor: colors.surfaceContainer,
-                borderColor: colors.outlineVariant,
-                boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
+                borderColor: colors.divider,
+                boxShadow: "0 1px 2px rgba(0, 0, 0, 0.04)",
               }}
             >
               <Check
-                size={20}
+                size={18}
                 className="flex-shrink-0 mt-0.5"
                 style={{ color: colors.primary }}
               />
               <span
-                className="text-sm leading-relaxed"
+                className="text-sm leading-relaxed font-medium"
                 style={{ color: colors.onSurface }}
               >
                 {cap}
               </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function UseCases() {
+  const usecases = [
+    {
+      role: "For Doctors",
+      items: [
+        "Schedule management without manual calls",
+        "Patient intake data organized by appointment",
+        "Focus on patient care, not coordination",
+        "Real-time appointment status",
+      ],
+    },
+    {
+      role: "For Clinic Admins",
+      items: [
+        "Dashboard with full appointment visibility",
+        "No-show tracking and analytics",
+        "Staff workload optimization",
+        "Appointment reminders sent automatically",
+      ],
+    },
+    {
+      role: "For Patients",
+      items: [
+        "Book appointments without phone calls",
+        "Natural language and simple menu options",
+        "Instant confirmation and reminders",
+        "Easy rescheduling or cancellation",
+      ],
+    },
+  ];
+
+  return (
+    <section style={{ backgroundColor: colors.surface }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6 leading-snug"
+            style={{ color: colors.primary }}
+          >
+            Built for Every Role in the Clinic
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {usecases.map((uc) => (
+            <div
+              key={uc.role}
+              className="p-6 sm:p-8 rounded-xl border bg-white"
+              style={{
+                borderColor: colors.divider,
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
+              }}
+            >
+              <h3
+                className="text-lg font-semibold mb-4"
+                style={{ color: colors.primary }}
+              >
+                {uc.role}
+              </h3>
+              <ul className="space-y-3">
+                {uc.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-sm"
+                  >
+                    <span style={{ color: colors.primary }}>✓</span>
+                    <span style={{ color: colors.onSurface }}>
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -511,30 +473,28 @@ function CTA() {
     <section
       style={{
         backgroundColor: colors.primary,
-        backgroundImage: `linear-gradient(135deg, ${colors.primary} 0%, #005043 100%)`,
       }}
     >
-      <div className="max-w-4xl mx-auto px-6 py-24 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28 text-center">
         <h2
-          className="text-4xl font-bold mb-6 leading-tight"
+          className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6 leading-snug"
           style={{ color: colors.onPrimary }}
         >
-          Give your clinic desk a cleaner way to manage appointments.
+          Bring your clinic's appointments into one calmer workflow.
         </h2>
-        <p className="text-lg mb-8" style={{ color: colors.onPrimary }}>
-          Start with WhatsApp booking, then bring schedules, doctors, patients,
-          and appointment changes into one calmer workflow.
+        <p className="text-base sm:text-lg mb-8 sm:mb-10" style={{ color: colors.onPrimary, opacity: 0.95 }}>
+          Start with WhatsApp booking and expand to schedules, doctors, patients, and appointment management—all in one place.
         </p>
         <button
           onClick={() => navigate("/login")}
-          className="px-8 py-3 font-semibold transition hover:opacity-90 inline-flex items-center gap-2 rounded"
+          className="px-6 sm:px-8 py-3 font-medium transition hover:opacity-90 active:scale-95 inline-flex items-center gap-2 rounded-lg"
           style={{
             backgroundColor: colors.onPrimary,
             color: colors.primary,
           }}
         >
-          Open Quick Cliniq
-          <ArrowRight size={18} />
+          Get started
+          <ArrowRight size={16} />
         </button>
       </div>
     </section>
@@ -542,63 +502,131 @@ function CTA() {
 }
 
 function Footer() {
-  const resumeUrl = "https://docs.google.com/document/d/1URW0U3VKQrB1ei65MZ4aqq-fwfPQ6m-v/edit?usp=sharing&ouid=101993679392346912388&rtpof=true&sd=true";
-  const resumeDownloadUrl = "https://docs.google.com/document/d/1URW0U3VKQrB1ei65MZ4aqq-fwfPQ6m-v/export?format=pdf";
-
   return (
     <footer
-      className="border-t py-8 px-6"
+      className="border-t px-4 sm:px-6 py-12 sm:py-16"
       style={{
-        borderColor: colors.outlineVariant,
+        borderColor: colors.divider,
         backgroundColor: colors.surface,
       }}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <div className="font-bold text-lg mb-2" style={{ color: colors.primary }}>
-            Quick Cliniq
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8">
+          {/* Brand */}
+          <div>
+            <div className="font-semibold text-base mb-4" style={{ color: colors.primary }}>
+              Quick Cliniq
+            </div>
+            <p className="text-xs leading-relaxed" style={{ color: colors.onSurfaceVariant }}>
+              Streamline clinic appointments with WhatsApp automation.
+            </p>
           </div>
-          <div className="text-xs" style={{ color: colors.onSurfaceVariant }}>
-            @2026 a tynzo product
+
+          {/* Product */}
+          <div>
+            <h4 className="font-semibold text-sm mb-4" style={{ color: colors.onSurface }}>
+              Product
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a href="#features" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+                  Features
+                </a>
+              </li>
+              <li>
+                <a href="#workflow" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+                  How it Works
+                </a>
+              </li>
+              <li>
+                <a href="#operations" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+                  Capabilities
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="font-semibold text-sm mb-4" style={{ color: colors.onSurface }}>
+              Company
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a href="#" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="mailto:admin@quickcliniq.com" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="font-semibold text-sm mb-4" style={{ color: colors.onSurface }}>
+              Support
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a
+                  href="mailto:admin@quickcliniq.com"
+                  className="transition hover:opacity-60"
+                  style={{ color: colors.onSurfaceVariant }}
+                >
+                  Email Support
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/+918297997929"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition hover:opacity-60"
+                  style={{ color: colors.onSurfaceVariant }}
+                >
+                  WhatsApp
+                </a>
+              </li>
+              <li>
+                <a href="#" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+                  Documentation
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div className="flex flex-col gap-3 text-xs">
-          <a
-            href={resumeUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="transition hover:opacity-70"
-            style={{ color: colors.primary, fontWeight: "600" }}
-          >
-            📄 View Resume
-          </a>
-          <a
-            href={resumeDownloadUrl}
-            download="resume.pdf"
-            className="transition hover:opacity-70"
-            style={{ color: colors.primary, fontWeight: "600" }}
-          >
-            ⬇️ Download Resume
-          </a>
-        </div>
-        <div className="flex flex-col md:flex-row md:justify-end gap-4 text-xs">
-          <a
-            href="mailto:support@quickcliniq.com"
-            className="transition hover:opacity-70"
-            style={{ color: colors.onSurfaceVariant }}
-          >
-            support@quickcliniq.com
-          </a>
-          <a
-            href="https://wa.me/918297997929"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-2 transition hover:opacity-70"
-            style={{ color: colors.onSurfaceVariant }}
-          >
-            <Phone size={14} />
-            WhatsApp Support
-          </a>
+
+        {/* Divider */}
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: colors.divider,
+            margin: "2rem 0",
+          }}
+        />
+
+        {/* Bottom */}
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 text-xs">
+          <div style={{ color: colors.onSurfaceVariant }}>
+            © 2026 Quick Cliniq. All rights reserved.
+          </div>
+          <div className="flex gap-6">
+            <a href="#" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+              Privacy Policy
+            </a>
+            <a href="#" className="transition hover:opacity-60" style={{ color: colors.onSurfaceVariant }}>
+              Terms of Service
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -612,6 +640,7 @@ export default function QuickCliniqHome() {
       <main>
         <Hero />
         <Features />
+        <UseCases />
         <Workflow />
         <Operations />
         <CTA />
